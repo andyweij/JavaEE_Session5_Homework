@@ -1,0 +1,34 @@
+★ 飲料機作業(使用者會員功能)
+HTML + Struts 1.x(Framework) + Filter(HttpSession) + JDBC(JNDI)
+
+基本題
+(1)前後臺頁面移至 WEB-INF底下，需透過會員登入後才可訪問使用
+(2)建立 Filter建立會員登入、登出 session儲存會員資料判斷
+(3)LoginAction帳密檢核(登入)、LoginAction(登出)
+(4)將實際購買顧客編號寫入BEVERAGE_ORDER訂單資料表
+(5)使用 Filter 統一處理 Request、Response 中文亂碼問題
+
+進階題
+(1)商品加入購物車
+(2)查詢購物車商品
+(3)清空購物車
+(4)結帳改用購物車內商品結帳
+
+http://localhost:8085/JavaEE_Session5_Homework/
+
+● server.xml 設置
+<Context docBase="JavaEE_Session5_Homework" path="/JavaEE_Session5_Homework" reloadable="true" source="org.eclipse.jst.jee.server:JavaEE_Session5_Homework">
+   <Resource
+     auth="Container" 
+   	 name="jdbc/oracle"
+   	 type="javax.sql.DataSource"
+	 driverClassName="oracle.jdbc.OracleDriver"
+	 url="jdbc:oracle:thin:@localhost:1521:xe"
+	 username="LOCAL"
+	 password="root"
+	 maxTotal="20" 
+	 maxActive="20"
+	 maxIdle="10"
+	 maxWaitMillis="-1"
+   />
+</Context>

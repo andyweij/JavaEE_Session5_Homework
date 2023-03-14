@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+        <form-bean name="goodsorderform" type="com.training.formbean.GoodsOrderForm"/>
+        <form-bean name="backactionform" type="com.training.formbean.BackActionForm"/>
+  	</form-beans>
+  	
+ <action-mappings>    
+        <action path="/FrontendAction" type="com.training.action.FrontendAction" 
+        		parameter="action" name="goodsorderform">
+            <forward name="vendingMachine" path="/WEB-INF/view/VendingMachineCart.html"/>
+        </action>
+        <action path="/BackendAction" type="com.training.action.BackendAction" 
+        		parameter="action" name="backactionform">
+           <forward name="backendGoodsList" path="/WEB-INF/view/VM_Backend_GoodsList.html"/>
+            <forward name="backendGoodsReplenishment" path="/WEB-INF/view/VM_Backend_GoodsReplenishment.html" redirect="true"/>
+            <forward name="backendGoodsCreate" path="/WEB-INF/view/VM_Backend_GoodsCreate.html" redirect="true"/>
+            <forward name="backendGoodsSaleReport" path="/WEB-INF/view/VM_Backend_GoodsSaleReport.html"/>
+        </action>
+         <action path="/LoginAction" type="com.training.action.LoginAction" parameter="action">
+            <!-- 登入成功進入操作首頁 -->
+            <forward name="success" path="FrontendAction.do?action=searchGoods" redirect="true"/>
+            <!-- 登入失敗重回登入頁面 -->
+            <forward name="fail" path="/VendingMachineLogin.html" redirect="true"/>
+        </action> 
+        <action path="/MemberAction" type="com.training.action.MemberAction" parameter="action" name="goodsorderform">
+        <forward name="vendingMachine" path="/WEB-INF/view/VendingMachineCart.html"/>
+        </action>
+    </action-mappings>
+</struts-config>
+
